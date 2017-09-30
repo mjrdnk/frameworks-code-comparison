@@ -69,6 +69,42 @@ const module = angular.module('app.changePassword', [])
 
 ```
 
+### Angular
+```js
+import { Component, OnInit } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
+import { Auth } from 'actions/auth';
+import { Notification } from 'utils/notification';
+
+@Component({
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+})
+export class LoginComponent implements OnInit {
+    password: string;
+
+    constructor(
+        private logger: NGXLogger,
+        private auth: Auth,
+        private notification: Notification,
+    ) {}
+
+    ngOnInit() { 
+      this.password = '';
+    }
+
+    changePassword() {
+        this.auth.changePassword(this.password).subscribe(() => {
+          this.notification.info('Password has been changes successfully');
+        }).catch(error => {
+          this.logger.error(error);
+          this.notification.error('There was an error. Please try again');
+        });
+    }
+}
+```
+
 ### React
 ```js
 import Logger from 'utils/logger'
