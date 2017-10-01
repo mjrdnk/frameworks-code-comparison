@@ -78,11 +78,11 @@ import { Notification } from 'utils/notification';
 
 @Component({
     selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+    templateUrl: './change-password.component.html',
+    styleUrls: ['./change-password.component.scss'],
 })
-export class LoginComponent implements OnInit {
-    password: string;
+export class ChangePasswordComponent implements OnInit {
+    password: string = '';
 
     constructor(
         private logger: NGXLogger,
@@ -90,9 +90,7 @@ export class LoginComponent implements OnInit {
         private notification: Notification,
     ) {}
 
-    ngOnInit() { 
-      this.password = '';
-    }
+    ngOnInit() { /* runs on component initialization */ }
 
     changePassword() {
         this.auth.changePassword(this.password).subscribe(() => {
@@ -103,6 +101,25 @@ export class LoginComponent implements OnInit {
         });
     }
 }
+
+
+/*
+Module is a 'holder' for your components:
+every service, redux store, effects, actions, external modules (bootstrap, etc)
+have to be declared here, in order to be used within this module's components.
+Keep in the separate file
+*/
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { ChangePasswordComponent } from './change-password.component';
+
+@NgModule({
+  imports: [CommonModule],
+  declarations: [ChangePasswordComponent],
+})
+export class ChangePasswordModule {}
+
 ```
 
 ### React
