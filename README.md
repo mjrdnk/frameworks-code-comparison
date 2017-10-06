@@ -366,6 +366,35 @@ angular.module('myReverseFilterApp', [])
 });
 ```
 
+### Angular
+
+In Angular filters are called pipes.
+Built-in pipes available in Angular: DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, and PercentPipe.
+More about pipes in Angular [here](https://angular.io/guide/pipes)
+
+Apart from built in, you can create your own, custom pipes.
+
+Create custom pipe:
+
+```js
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+    constructor(public sanitizer: DomSanitizer) {}
+    transform(url) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+}
+```
+
+Use custom pipe in the template:
+
+```html
+  <iframe [src]="someUrl | safe"></iframe>
+```
+
 # Inputs and Outputs
 
 ### AngularJS
