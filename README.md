@@ -916,9 +916,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'registration',
   template: `
-    <div *ngIf="registrationCompleted;then registrationSuccessed;else registrationFailed"></div>
+    <div *ngIf="registrationCompleted;then registrationSucceeded;else registrationFailed"></div>
 
-    <ng-template #registrationSuccessed>
+    <ng-template #registrationSucceeded>
       <registration-completed></registration-completed>
     </ng-template>
 
