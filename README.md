@@ -894,19 +894,19 @@ import { Component } from '@angular/core';
     <!-- ------------------- -->
     <!-- use ngIf like this: -->
     <!-- ------------------- -->
-    <div *ngIf="registrationCompleted">
-      <registration-completed></registration-completed>
+    <div *ngIf="displaySpecialOffer">
+      <special-offer></special-offer>
     </div>
 
 
     <!-- ------------------------ -->
     <!-- use ngIf;else like this: -->
     <!-- ------------------------ -->
-    <div *ngIf="registrationCompleted;else registrationFailed">
+    <div *ngIf="registrationCompleted;else registrationForm">
       <registration-completed></registration-completed>
     </div>
 
-    <ng-template #registrationFailed>
+    <ng-template #registrationForm>
       <registration-form></registration-form>
     </ng-template>
 
@@ -914,13 +914,13 @@ import { Component } from '@angular/core';
     <!-- ------------------------------ -->
     <!-- use ngIf;then;else like this:  -->
     <!-- ------------------------------ -->
-    <div *ngIf="registrationCompleted;then registrationSucceeded;else registrationFailed"></div>
+    <div *ngIf="registrationCompleted;then registrationSucceeded;else registrationForm"></div>
 
     <ng-template #registrationSucceeded>
       <registration-completed></registration-completed>
     </ng-template>
 
-    <ng-template #registrationFailed>
+    <ng-template #registrationForm>
       <registration-form></registration-form>
     </ng-template>
   `,
